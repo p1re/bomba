@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; pointer-events: none;">
+        <!-- Player 1 (Top Left) -->
+        <ui:VisualElement style="position: absolute; top: 20px; left: 20px; background-color: rgba(0, 0, 0, 0.5); padding: 10px; border-radius: 5px;">
+            <ui:Label name="p1Name" text="PLAYER 1" style="color: rgb(255, 50, 50); -unity-font-style: bold; font-size: 20px;" />
+            <ui:Label name="p1Lives" text="Lives: 3" style="color: white; font-size: 16px;" />
+            <ui:Label name="p1Score" text="Area: 0%" style="color: white; font-size: 16px;" />
+        </ui:VisualElement>
+
+        <!-- Player 2 (Top Right) -->
+        <ui:VisualElement style="position: absolute; top: 20px; right: 20px; background-color: rgba(0, 0, 0, 0.5); padding: 10px; border-radius: 5px; align-items: flex-end;">
+            <ui:Label name="p2Name" text="PLAYER 2" style="color: rgb(50, 50, 255); -unity-font-style: bold; font-size: 20px;" />
+            <ui:Label name="p2Lives" text="Lives: 3" style="color: white; font-size: 16px;" />
+            <ui:Label name="p2Score" text="Area: 0%" style="color: white; font-size: 16px;" />
+        </ui:VisualElement>
+
+        <!-- Timer (Top Center) -->
+        <ui:VisualElement style="position: absolute; top: 20px; left: 50%; translate: -50% 0; background-color: rgba(0, 0, 0, 0.7); padding: 10px 30px; border-radius: 10px; align-items: center;">
+            <ui:Label name="timer" text="60" style="color: rgb(241, 196, 15); font-size: 32px; -unity-font-style: bold;" />
+        </ui:VisualElement>
+
+        <!-- Countdown Label (Center) -->
+        <ui:VisualElement style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; align-items: center; justify-content: center;">
+            <ui:Label name="countdownLabel" text="WAITING FOR PLAYERS..." style="color: white; font-size: 80px; -unity-font-style: bold; -unity-text-outline-width: 2px; -unity-text-outline-color: black; -unity-text-align: middle-center;" />
+        </ui:VisualElement>
+
+        <!-- End Screen Panel (Hidden by default) -->
+        <ui:VisualElement name="endScreen" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.85); align-items: center; justify-content: center; display: none; pointer-events: all;">
+            <ui:Label name="resultTitle" text="YOU WIN!" style="color: rgb(46, 204, 113); font-size: 100px; -unity-font-style: bold; margin-bottom: 20px;" />
+            <ui:Label name="statsLabel" text="P1: 0% | P2: 0%" style="color: white; font-size: 32px; margin-bottom: 60px;" />
+            <ui:Button name="backToLobbyButton" text="VOLVER AL LOBBY" style="font-size: 24px; padding: 20px 60px; background-color: rgb(52, 152, 219); color: white; border-radius: 15px; border-width: 0px; -unity-font-style: bold;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; background-color: rgb(30, 31, 34);">
+        <!-- Background Decorative Elements -->
+        <ui:VisualElement style="position: absolute; top: -100px; left: -100px; width: 400px; height: 400px; background-color: rgba(46, 204, 113, 0.1); border-radius: 200px; rotate: 45deg;" />
+        <ui:VisualElement style="position: absolute; bottom: -100px; right: -100px; width: 400px; height: 400px; background-color: rgba(52, 152, 219, 0.1); border-radius: 200px; rotate: -45deg;" />
+
+        <ui:VisualElement style="background-color: rgba(20, 20, 20, 0.8); padding: 60px; border-radius: 30px; align-items: center; border-width: 2px; border-color: rgba(255, 255, 255, 0.1); width: 650px;">
+            <ui:Label text="BOMBERSPLASH" style="font-size: 52px; color: rgb(255, 255, 255); -unity-font-style: bold; margin-bottom: 5px; letter-spacing: 2px; -unity-text-outline-width: 1px; -unity-text-outline-color: rgba(255, 255, 255, 0.2);" />
+            <ui:Label text="COLOR WARFARE 1v1" style="font-size: 16px; color: rgb(241, 196, 15); -unity-font-style: bold; margin-bottom: 60px; letter-spacing: 6px; opacity: 0.8;" />
+            
+            <ui:VisualElement style="width: 100%; align-items: stretch;">
+                <ui:Button name="playButton" text="BUSCAR PARTIDA" style="font-size: 22px; padding: 18px; background-color: rgb(46, 204, 113); color: rgb(255, 255, 255); border-radius: 12px; border-width: 0px; -unity-font-style: bold; margin-bottom: 20px; transition-property: background-color, scale; transition-duration: 0.2s;" />
+                <ui:Button name="playLocalButton" text="ENTRENAMIENTO IA" style="font-size: 22px; padding: 18px; background-color: rgb(52, 152, 219); color: rgb(255, 255, 255); border-radius: 12px; border-width: 0px; -unity-font-style: bold; transition-property: background-color, scale; transition-duration: 0.2s;" />
+            </ui:VisualElement>
+            
+            <ui:VisualElement style="margin-top: 40px; align-items: center; width: 100%;">
+                <ui:VisualElement style="height: 1px; background-color: rgba(255, 255, 255, 0.1); width: 100%; margin-bottom: 20px;" />
+                <ui:Label name="waitingText" text="SISTEMA LISTO" style="font-size: 14px; color: rgb(150, 150, 150); letter-spacing: 2px; -unity-font-style: bold;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:Label text="v2.0 Stable Build" style="position: absolute; bottom: 20px; color: rgba(255, 255, 255, 0.3); font-size: 12px;" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1776508521",
+        "python_version": "3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\nildi\\BomberMan\\mlagents_env\\Scripts\\mlagents-learn config/bomberman_config.yaml --run-id=Bomberman_V2 --force",
+        "mlagents_version": "1.1.0",
+        "mlagents_envs_version": "1.1.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "2.11.0+cpu",
+        "numpy_version": "1.23.5",
+        "end_time_seconds": "1776508557"
+    },
+    "total": 35.359374800000296,
+    "count": 1,
+    "self": 0.007293200002095546,
+    "children": {
+        "run_training.setup": {
+            "total": 0.16134909999891534,
+            "count": 1,
+            "self": 0.16134909999891534
+        },
+        "TrainerController.start_learning": {
+            "total": 35.190732499999285,
+            "count": 1,
+            "self": 0.0006369999991875375,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 35.19007109999984,
+                    "count": 1,
+                    "self": 35.19007109999984
+                },
+                "trainer_threads": {
+                    "total": 8.999995770864189e-07,
+                    "count": 1,
+                    "self": 8.999995770864189e-07
+                },
+                "TrainerController._save_models": {
+                    "total": 2.350000067963265e-05,
+                    "count": 1,
+                    "self": 2.350000067963265e-05
+                }
+            }
+        }
+    }
+}
