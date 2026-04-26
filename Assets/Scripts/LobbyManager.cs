@@ -63,35 +63,45 @@ public class LobbyManager : MonoBehaviour
             // igual cargamos la escena porque el entrenamiento IA ahora es independiente
             if (!NetworkManager.Singleton.StartHost()) {
                 Debug.LogWarning("No se pudo iniciar el Host de Red. Cargando escena en modo OFFLINE para entrenamiento.");
-                SceneManager.LoadScene("Bomberman");
+                SceneManager.LoadScene("Assets/Scenes/Bomberman.unity");
             }
             else
             {
-                NetworkManager.Singleton.SceneManager.LoadScene("Bomberman", LoadSceneMode.Single);
+                NetworkManager.Singleton.SceneManager.LoadScene("Assets/Scenes/Bomberman.unity", LoadSceneMode.Single);
             }
         }
         else
         {
             // Si ni siquiera hay NetworkManager, cargamos la escena por el método tradicional
-            SceneManager.LoadScene("Bomberman");
+            SceneManager.LoadScene("Assets/Scenes/Bomberman.unity");
         }
     }
 
     async void Start()
     {
-        // Esto asegura que cada ventana del editor tenga un jugador distinto
-        var options = new InitializationOptions();
-        options.SetProfile("Player_" + Random.Range(0, 100000).ToString());
+        try 
+        {
+            if (UnityServices.State.ToString() == "Uninitialized")
+            {
+                // Esto asegura que cada ventana del editor tenga un jugador distinto
+                var options = new InitializationOptions();
+                options.SetProfile("Player_" + Random.Range(0, 100000).ToString());
+                await UnityServices.InitializeAsync(options);
+            }
 
-        await UnityServices.InitializeAsync(options);
-
-        AuthenticationService.Instance.SignedIn += () => {
-            Debug.Log("User Signed in: " + AuthenticationService.Instance.PlayerId);
-        };
-        
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
-        
-        SetWaitingText("Conectado. Presiona JUGAR.");
+            if (!AuthenticationService.Instance.IsSignedIn)
+            {
+                await AuthenticationService.Instance.SignInAnonymouslyAsync();
+                Debug.Log("User Signed in: " + AuthenticationService.Instance.PlayerId);
+            }
+            
+            SetWaitingText("Conectado. Presiona JUGAR.");
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Error en autenticación: " + e.Message);
+            SetWaitingText("Error de conexión.");
+        }
     }
 
     private void Update()
@@ -132,7 +142,7 @@ public class LobbyManager : MonoBehaviour
                         if (currentLobby.Players.Count >= 2 && NetworkManager.Singleton != null && NetworkManager.Singleton.IsServer)
                         {
                             currentLobby = null; 
-                            NetworkManager.Singleton.SceneManager.LoadScene("Bomberman", LoadSceneMode.Single);
+                            NetworkManager.Singleton.SceneManager.LoadScene("Assets/Scenes/Bomberman.unity", LoadSceneMode.Single);
                         }
                     }
                 } 

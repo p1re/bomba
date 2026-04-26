@@ -80,7 +80,7 @@ public class PlayerData : NetworkBehaviour
         foreach (var r in renderers) r.enabled = enabled;
     }
 
-    [ServerRpc(RequireOwnership = false)]
+    [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
     public void TakeDamageServerRpc()
     {
         if (isInvulnerable.Value) return;

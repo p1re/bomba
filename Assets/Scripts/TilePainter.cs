@@ -45,7 +45,25 @@ public class TilePainter : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
+        paintedTilesList.OnListChanged += OnTileListChanged;
         RepaintAll();
+    }
+
+    public override void OnNetworkDespawn()
+    {
+        if (paintedTilesList != null)
+        {
+            paintedTilesList.OnListChanged -= OnTileListChanged;
+        }
+    }
+
+    private void OnTileListChanged(NetworkListEvent<TileStatus> changeEvent)
+    {
+        if (changeEvent.Type == NetworkListEvent<TileStatus>.EventType.Add || 
+            changeEvent.Type == NetworkListEvent<TileStatus>.EventType.Value)
+        {
+            ApplyPaintVisual(changeEvent.Value.x, changeEvent.Value.y, changeEvent.Value.colorIndex);
+        }
     }
 
     // MÉTODO PRINCIPAL: Lo llaman las explosiones locales de cada jugador
@@ -74,7 +92,7 @@ public class TilePainter : NetworkBehaviour
         }
     }
 
-    [ServerRpc(RequireOwnership = false)]
+    [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
     private void RequestPaintServerRpc(Vector3 worldPos, Color color)
     {
         // El servidor recibe la petición del cliente y la ejecuta oficialmente
